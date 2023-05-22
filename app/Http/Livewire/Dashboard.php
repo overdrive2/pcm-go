@@ -12,6 +12,7 @@ class Dashboard extends Component
     public function mount()
     {
         $this->menus = WebMenu::where('menu_group_id', 1)->orderBy('no', 'asc')->get();
+       // dd($this->menus);
     }
 
     public function render()

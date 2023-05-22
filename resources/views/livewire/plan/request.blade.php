@@ -48,13 +48,13 @@
                 </div>
                 <div class="lg:w-1/2 w-full grow lg:flex justify-end">
                     <div class="flex gap-2">
-                        <div class="grow w-96">
-                            <x-select2 id="dept_search" wire:model="deptIds" multiple :placeholder="__('-- เลือกหน่วยงาน --')">
+                        <div class="grow w-96" wire:ignore>
+                            <select id="dept_search" wire:model="deptIds" data-te-select-init data-te-select-filter="true" placeholder="__('-- เลือกหน่วยงาน --')">
                                 <option disabled>-- เลือกหน่วยงาน --</option>
                                 @foreach($depts as $dept)
-                                    <option value="{{ $dept->dept_id }}">{{ $dept->dept_name }}</option> 
+                                    <option value="{{ $dept->dept_id }}">{{ $dept->dept_name }}</option>
                                 @endforeach
-                            </x-select2>
+                            </select>
                         </div>
                         <x-button.primary type="button" class="w-28" wire:click="new">
                             New
@@ -140,7 +140,7 @@
             {{ $rows->links() }}
         </div>
     </div>
-    <x-modal.dialog wire:model.defer="showEditModal" maxWidth="x4" footerAlign="text-center">
+    <x-modal.dialog wire:model.defer="showEditModal" maxWidth="4xl" footerAlign="text-center">
         <x-slot name="title">รายละเอียดคำขอแผน</x-slot>
         <x-slot name="content">
             <div class="px-4">
@@ -265,14 +265,14 @@
             @livewire('stk-plans', ['master_id' => $master_id, 'loadData' => $showPlanDetailModal], key('plan-detail' . $master_id . $showPlanDetailModal))
         </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('showPlanDetailModal')" wire:loading.attr="disabled">
+            <x-button.secondary wire:click="$toggle('showPlanDetailModal')" wire:loading.attr="disabled">
                 {{ __('ปิด') }}
-            </x-jet-secondary-button>
+            </x-button.secondary>
         </x-slot>
     </x-modal.dialog>
 
     <!-- Plan Details stmass list -->
-    <x-modal.dialog wire:model.defer="showEditPlanModal" maxWidth="x4">
+    <x-modal.dialog wire:model.defer="showEditPlanModal" maxWidth="4xl">
         <x-slot name="title">รายละเอียด</x-slot>
         <x-slot name="content">
             @livewire('plan-form', ['plan_id' => $plan_id, 'master_id' => $master_id, 'loadData' => $showEditPlanModal], key('plan-form'.$plan_id.$showEditPlanModal))
@@ -294,9 +294,9 @@
             @livewire('search-modal.document-type', ['loadData' => $showSearchDoctype], key('search-modal.document-type'.$showSearchDoctype))
         </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('showSearchDoctype')" wire:loading.attr="disabled">
+            <x-button.secondary wire:click="$toggle('showSearchDoctype')" wire:loading.attr="disabled">
                 {{ __('ปิด') }}
-            </x-jet-secondary-button>
+            </x-button.secondary>
         </x-slot>
     </x-modal.dialog>
 
@@ -308,9 +308,9 @@
             @endif
         </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('showSearchModal')" wire:loading.attr="disabled">
+            <x-button.secondary wire:click="$toggle('showSearchModal')" wire:loading.attr="disabled">
                 {{ __('ปิด') }}
-            </x-jet-secondary-button>
+            </x-button.secondary>
         </x-slot>
     </x-modal.dialog>
 
@@ -320,9 +320,9 @@
             @livewire('search-modal.stmas', ['loadData' => $showSearchStmass, 'doctype_id' => $editing->doctype_id], key('search-modal.stmas'.$showSearchStmass.$editing->doctype_id))
         </x-slot>
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('showSearchStmass')" wire:loading.attr="disabled">
+            <x-button.secondary wire:click="$toggle('showSearchStmass')" wire:loading.attr="disabled">
                 {{ __('ปิด') }}
-            </x-jet-secondary-button>
+            </x-button.secondary>
         </x-slot>
     </x-modal.dialog>
 </div>

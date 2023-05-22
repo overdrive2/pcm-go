@@ -17,7 +17,7 @@ class Request extends Component
 {
     use WithPerPagePagination, WithCachedRows, DateTimeHelpers, WithSorting;
 
-    public $dept_search, $dept, $year, $current_year, $master_id, $master_id_from_delete; 
+    public $dept_search, $dept, $year, $current_year, $master_id, $master_id_from_delete;
     public $showPlanDetail;
     public $showPlanDetailModal = false;
     public $showEditModal = false;
@@ -30,7 +30,7 @@ class Request extends Component
     public $showSearchDoctype = false;
     public $showSearchModal = false;
     public $showSearchStmass = false;
-    public $owner, $modalComponent, $modalName, $action; 
+    public $owner, $modalComponent, $modalName, $action;
     public $search = '';
     public $deptIds = [];
 
@@ -64,10 +64,10 @@ class Request extends Component
     {
         $this->owner = $owner;
         $this->modalComponent = $component;
-        $this->modalName = 
+        $this->modalName =
         $this->action = $action;
         $this->showSearchModal = true;
-    } 
+    }
 
     public function setFromDept($value)
     {
@@ -91,7 +91,7 @@ class Request extends Component
     public function closeModal($modal)
     {
         $this->{$modal} = false;
-    }    
+    }
 
     public function openSearchDoctype()
     {
@@ -206,9 +206,9 @@ class Request extends Component
 
         $this->step++;
         /*if(!$this->editing->plan_status)
-            $this->editing->plan_status = 'W';   
+            $this->editing->plan_status = 'W';
         if(!$this->editing->delflg)
-            $this->editing->delflg = false;   
+            $this->editing->delflg = false;
         $this->validate();
         $this->editing->save();
         $this->showEditModal = false;
@@ -240,7 +240,7 @@ class Request extends Component
 
         return $this->applySorting($query);
     }
-    
+
     public function showPlanDetail($id)
     {
         $this->master_id = $id;
@@ -260,12 +260,12 @@ class Request extends Component
         $this->master_id_from_delete = $id;
 
         $options = [
-            'title' => 'โปรดยืนยันคำสั่ง', 
-            'text' => 'ต้องการลบรายการนี้ใช่หรือไม่!', 
+            'title' => 'โปรดยืนยันคำสั่ง',
+            'text' => 'ต้องการลบรายการนี้ใช่หรือไม่!',
             'action' => 'delete:master-plan',
             'outside' => true,
         ];
-    
+
         return $this->dispatchBrowserEvent('delete:confirm', $options);
     }
 
@@ -285,17 +285,17 @@ class Request extends Component
     public function confirmDeletePlan($id)
     {
         $this->plan_id = $id;
-        
+
         $options = [
-            'title' => 'โปรดยืนยันคำสั่ง', 
-            'text' => 'ต้องการลบรายการนี้ใช่หรือไม่!', 
+            'title' => 'โปรดยืนยันคำสั่ง',
+            'text' => 'ต้องการลบรายการนี้ใช่หรือไม่!',
             'action' => 'delete:stkplan',
             'outside' => true,
         ];
-        
+
         return $this->dispatchBrowserEvent('delete:confirm', $options);
 
-    }  
+    }
 
     public function deletePlan()
     {
@@ -332,6 +332,6 @@ class Request extends Component
             'rows' => $this->rows,
             'years' => $this->years,
             'depts' => $this->rowsDept
-        ])->layout('layouts.index');
+        ]);
     }
 }

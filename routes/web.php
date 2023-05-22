@@ -28,6 +28,9 @@ Route::middleware([
     Route::get('/dashboard', [App\Http\Livewire\Dashboard::class, '__invoke'])->name('dashboard');
 });
 
+Route::get('basic-table', [App\Http\Livewire\BasicTable::class, '_invoke'])->name('basictables');
+Route::get('mon1', [App\Http\Livewire\Monitoring::class, '_invoke'])->name('cpu.show');
+
 Route::middleware(['auth:sanctum', 'verified'])->prefix('plan')->group(function () {
     Route::get('home', [App\Http\Livewire\Plan\Home::class, '__invoke'])->name('plan.home');
     Route::get('/', [App\Http\Livewire\Plan\Show::class, '__invoke'])->name('plan.show');
