@@ -6,6 +6,7 @@ import focus from '@alpinejs/focus';
 import flatpickr from "flatpickr";
 import "flatpickr/dist/l10n/th.js";
 import language from 'flatpickr/dist/l10n/th'
+import './theme';
 
 import {
     Datepicker,

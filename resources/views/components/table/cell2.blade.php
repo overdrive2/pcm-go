@@ -12,7 +12,7 @@
         <div class="px-1 py-1 {{ $inline }}">
             {{ $slot }}
             @if($unit)
-            <span class="text-gray-600 lg:hidden inline-flex font-semibold px-2">{{ $unit }}</span>
+            <span class="text-gray-600 dark:text-gray-100 lg:hidden inline-flex font-semibold px-2">{{ $unit }}</span>
             @endif
         </div>
     </div>

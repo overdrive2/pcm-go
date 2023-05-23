@@ -14,10 +14,11 @@ class Transections extends Component
 
     public $filters = [
         'search' => '',
-        'dept_id' => '',
+        'dept_id' => '148',
         'site' => '',
         'stkcode' => '',
     ];
+    public $sites, $depts;
 
     public function getRowsQueryProperty()
     {
@@ -43,14 +44,14 @@ class Transections extends Component
     public function mount()
     {
         $this->filters['site'] = (auth()->user()->stksite != '')? auth()->user()->stksite : 'NA';
+        $this->sites = $this->site_rows;
+        $this->depts = $this->dept_rows;
     }
 
     public function render()
     {
         return view('livewire.stock.transections', [
             'collection' => $this->rows,
-            'sites' => $this->site_rows,
-            'depts' => $this->dept_rows,
         ]);
     }
 }

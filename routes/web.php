@@ -35,10 +35,11 @@ Route::middleware(['auth:sanctum', 'verified'])->prefix('plan')->group(function 
     Route::get('home', [App\Http\Livewire\Plan\Home::class, '__invoke'])->name('plan.home');
     Route::get('/', [App\Http\Livewire\Plan\Show::class, '__invoke'])->name('plan.show');
     Route::get('request', [App\Http\Livewire\Plan\Request::class, '__invoke'])->name('plan.request');
+    Route::get('movement', [App\Http\Livewire\Plan\Movement::class, '__invoke'])->name('plan.movement');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('stock')->group(function () {
     Route::middleware(['auth:sanctum', 'verified'])->get('/', App\Http\Livewire\StockHome::class)->name('stock.home');
-    Route::middleware(['auth:sanctum', 'verified'])->get('header', App\Http\Livewire\StockOuts::class)->name('stock.header');
+    Route::middleware(['auth:sanctum', 'verified'])->get('header', App\Http\Livewire\StockOuts::class)->name('stock.out');
     Route::middleware(['auth:sanctum', 'verified'])->get('transections', [App\Http\Livewire\Stock\Transections::class, '__invoke'])->name('stock.transections');
 });

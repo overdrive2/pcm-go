@@ -92,6 +92,9 @@ class Movement extends Component
         $query = Stkplan::selectRaw('stkcode, y, sum(pqty) as qty, sum(pamt) as amount')
             ->where('dept', $this->dept_id)
             ->where('y', $this->year)
+            ->when($this->search, function($query) {
+                return $query->where('stkdesc', 'like', '%'.$this->search.'%');
+            })
             ->groupBy(DB::raw('stkcode, y order by sum(pamt) desc'));
 
         return $query;

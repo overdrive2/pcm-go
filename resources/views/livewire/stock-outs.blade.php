@@ -10,7 +10,7 @@
     </x-slot>
     <div class="py-5 max-w-full mx-auto sm:px-6 lg:px-8">
         <div class="flex flex-col">
-            <div class="grid lg:flex lg:justify-between shadow mb-2 rounded-lg py-2 px-2 bg-white">
+            <div class="grid lg:flex lg:justify-between shadow mb-2 rounded-lg py-2 px-2 bg-white dark:bg-neutral-700">
                 <div class="lg:flex justify-between gap-x-2">
                     <div class="w-full">
                         <div class="relative">
@@ -22,11 +22,11 @@
                     </div>
                     <div class="w-full mt-2 lg:mt-0">
                         <div>
-                            <x-input.select placeholder="เลือกคลังตัดจ่าย" wire:model='filters.site'>
+                            <select placeholder="เลือกคลังตัดจ่าย" wire:model='filters.site'>
                               @foreach($sites as $site)
                               <option value="{{ $site->id }}">{{ $site->sitename }}</option>
                               @endforeach
-                            </x-input.select>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <!-- Transfer Table -->
-            <x-table2>
+            <x-table>
                 <x-slot name="header">
                     <x-table.heading2 sortable multi-column wire:click="sortBy('id')" :direction="$sorts['id'] ?? null">รหัส</x-table.heading2>
                     <x-table.heading2 sortable multi-column wire:click="sortBy('id')" :direction="$sorts['trdate'] ?? null" class="w-36">วันที่</x-table.heading2>
@@ -53,7 +53,7 @@
                 <x-slot name="body">
                     @foreach($transfers as $item)
                     <x-table.row2>
-                        <x-table.cell2 class="border-b lg:bg-white bg-gray-100" label="รหัส"><span class="leading-5  text-gray-700">{{ $item->id }}</span></x-table.cell2>
+                        <x-table.cell2 class="border-b" label="รหัส"><span class="leading-5">{{ $item->id }}</span></x-table.cell2>
                         <x-table.cell2 label="วันที่">{{ $item->trdate }}</x-table.cell2>
                         <x-table.cell2 label="เวลา">{{ $item->trtime }}</x-table.cell2>
                         <x-table.cell2 label="แผนก">{{ $item->department }}</x-table.cell2>
@@ -71,7 +71,7 @@
                     </x-table.row2>
                     @endforeach
                 </x-slot>
-            </x-table2>
+            </x-table>
             <!-- End Table -->
             <div class="py-4 px-4">{{ $transfers->links() }}</div>
         </div>

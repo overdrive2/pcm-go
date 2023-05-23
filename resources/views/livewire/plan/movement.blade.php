@@ -22,7 +22,6 @@
                         </li>
                     </ol>
                 </nav>
-                <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">รายการแผนประจำปี</h1>
             </div>
             <div class="sm:flex">
                 <div class="items-center hidden mb-3 sm:flex sm:divide-x sm:divide-gray-100 sm:mb-0 dark:divide-gray-700">
@@ -90,8 +89,10 @@
                                 </td>
                                 <td class="p-4 space-x-6 whitespace-nowrap">
                                     <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
-                                        <div class="text-base font-semibold text-gray-900 dark:text-white">{{ $row->stmas_name }}</div>
-                                        <div class="text-md font-normal text-gray-500 dark:text-gray-400">{{ $row->stkcode }}</div>
+                                        <div class="text-base font-semibold text-gray-900 dark:text-white text-left">
+                                            {!! $search ? str_replace($search, '<span class="bg-yellow-200 dark:bg-yellow-500">'.$search.'</span>', $row->stmas_name) : $row->stmas_name !!}
+                                        </div>
+                                        <div class="text-md font-normal text-gray-500 dark:text-gray-400 text-left">{{ $row->stkcode }}</div>
                                     </div>
                                 </td>
                                 <td class="p-4 text-base font-medium text-gray-900 whitespace-normal dark:text-white text-right w-32">{{ number_format($row->qty, 0) }}</td>
@@ -120,7 +121,7 @@
             {{ $rows->links() }}
         </div>
     </div>
-    <x-modal.dialog wire:model.defer="showEditModal" maxWidth="x4" footerAlign="text-center">
+    <x-modal.dialog wire:model.defer="showEditModal" maxWidth="4xl" footerAlign="text-center">
         <x-slot name="title">รายละเอียดสินค้าและบริการ</x-slot>
         <x-slot name="content">
             <div class="px-4">

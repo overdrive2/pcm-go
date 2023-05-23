@@ -1,6 +1,6 @@
 <div class="overflow-x-auto">
     <div class="inline-block min-w-full align-middle">
-        <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-600">
+        <table class="min-w-full">
             <thead class="bg-gray-100 dark:bg-gray-700">
                 <tr>
                     {{ $header }}

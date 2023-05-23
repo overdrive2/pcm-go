@@ -6,7 +6,6 @@ use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
 use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\Traits\DBLookups;
-use App\Models\TranferDetail;
 use App\Models\TranferMaster;
 use Livewire\Component;
 
@@ -35,6 +34,9 @@ class StockOuts extends Component
             })
             ->when($this->filters['dept_id'], function($query, $dept_id) {
                 return $query->where('dept_id', $dept_id);
+            })
+            ->when($this->filters['search'], function($query, $search) {
+                return $query->where('note', 'like', '%'.$search.'%');
             })
             ->when($this->filters['site'], function($query, $site) {
                 return $query->where('site', $site);
